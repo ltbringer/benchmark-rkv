@@ -23,3 +23,11 @@ variable "delete_on_termination" {
 variable "availability_zone" {
   default = "ap-south-1a"
 }
+
+variable "n_keys" {
+  default = 100000000
+}
+
+variable "data_dir" {
+  default = "/data/tmp"
+}

@@ -15,4 +15,7 @@ resource "aws_instance" "benchmark_instance" {
     volume_type           = var.volume_type
     delete_on_termination = var.delete_on_termination
   }
+
+  iam_instance_profile = aws_iam_instance_profile.benchmark_instance.id
 }
+

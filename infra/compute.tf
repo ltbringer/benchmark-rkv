@@ -1,10 +1,15 @@
 resource "aws_instance" "benchmark_instance" {
-  ami             = var.ami
-  instance_type   = var.instance_type
-  key_name        = aws_key_pair.rkv_benchmark_key.id
-  security_groups = [aws_security_group.ssh_into_benchmark_instance.id]
+  ami                    = var.ami
+  instance_type          = var.instance_type
+  key_name               = aws_key_pair.rkv_benchmark_key.id
+  security_groups        = [aws_security_group.ssh_into_benchmark_instance.id]
   vpc_security_group_ids = [aws_security_group.ssh_into_benchmark_instance.id]
-  subnet_id       = aws_default_subnet.default.id
+  subnet_id              = aws_default_subnet.default.id
+  user_data_base64 = base64encode("${templatefile("${path.module}/scripts/install.sh", {
+    N_KEYS  = var.n_keys
+    S3_URI = "s3://${aws_s3_bucket.benchmarks_bucket.id}/rkv/reports/"
+    DAT_DIR = var.data_dir
+  })}")
   tags = {
     Name = "benchmark_rkv"
   }

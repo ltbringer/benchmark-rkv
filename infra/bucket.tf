@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "benchmarks_bucket" {
-  bucket = "benchmarks-bucket"
+  bucket = "ltbringer"
   acl    = "private"
   versioning {
     enabled = true
@@ -8,9 +8,9 @@ resource "aws_s3_bucket" "benchmarks_bucket" {
     Name        = "Benchmark Bucket"
     Environment = "dev"
   }
-  lifecycle {
-    prevent_destroy = true
-  }
+  # lifecycle {
+  #   prevent_destroy = true
+  # }
 }
 
 resource "aws_s3_bucket_public_access_block" "benchmarks_bucket" {
@@ -21,6 +21,6 @@ resource "aws_s3_bucket_public_access_block" "benchmarks_bucket" {
 
 resource "aws_s3_bucket_object" "benchmarks_bucket" {
   bucket = aws_s3_bucket.benchmarks_bucket.id
-  key    = "rkv/reports/"
+  key    = "projects/rkv/reports/"
   acl    = "public-read"
 }

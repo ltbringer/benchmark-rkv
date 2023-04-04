@@ -44,9 +44,6 @@ run_benchmarks() {
 }
 
 main () {
-    export N_KEYS=${N_KEYS}
-    export S3_URI=${S3_URI}
-    export DAT_DIR=${DAT_DIR}
     mount_ebs
     setup_docker
     setup_awscli
@@ -54,4 +51,7 @@ main () {
     run_benchmarks
 }
 
+export N_KEYS=${N_KEYS}
+export S3_URI=${S3_URI}
+export DAT_DIR=${DAT_DIR}
 main

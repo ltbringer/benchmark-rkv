@@ -9,6 +9,7 @@ resource "aws_instance" "benchmark_instance" {
     N_KEYS  = var.n_keys
     S3_URI = "s3://${aws_s3_bucket.benchmarks_bucket.id}/rkv/reports/"
     DAT_DIR = var.data_dir
+    DISK_SIZE = var.additional_volume_size
   })}")
   tags = {
     Name = "benchmark_rkv"

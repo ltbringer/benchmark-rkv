@@ -30,12 +30,12 @@ setup_awscli() {
 
 download_image() {
     # Pull docker image
-    docker pull ltbringer/benchmark-rkv:latest
+    docker pull ltbringer/benchmark-rkv:${IMAGE_TAG}
 }
 
 run_benchmarks() {
     # run docker image
-    docker run -d --name rkv-bench \
+    docker run -d --name $CONTAINER_NAME \
         -v /data:/tmp \
         -e N_KEYS=$N_KEYS \
         -e S3_URI=$S3_URI \
@@ -54,4 +54,5 @@ main () {
 export N_KEYS=${N_KEYS}
 export S3_URI=${S3_URI}
 export DAT_DIR=${DAT_DIR}
+export CONTAINER_NAME="rkv-bench"
 main

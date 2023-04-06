@@ -25,9 +25,17 @@ variable "availability_zone" {
 }
 
 variable "n_keys" {
-  default = 100000000
+  default = 1000000
 }
 
 variable "data_dir" {
   default = "/tmp/database"
+}
+
+variable "remote_report_dir" {
+  default = "projects/rkv/reports"
+}
+
+variable "image_tag" {
+  default = "0.0.2"
 }

@@ -29,12 +29,13 @@ resource "aws_iam_role_policy" "benchmark_instance" {
       "Action": [
         "s3:PutObject",
         "s3:GetObject",
+        "s3:PutObjectAcl",
         "s3:ListBucket"
       ],
       "Effect": "Allow",
       "Resource": [
-        "arn:aws:s3:::benchmarks-bucket",
-        "arn:aws:s3:::benchmarks-bucket/*"
+        "arn:aws:s3:::${aws_s3_bucket.benchmarks_bucket.id}",
+        "arn:aws:s3:::${aws_s3_bucket.benchmarks_bucket.id}/${var.remote_report_dir}/*"
       ]
     }
   ]

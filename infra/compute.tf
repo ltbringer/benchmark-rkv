@@ -7,9 +7,10 @@ resource "aws_instance" "benchmark_instance" {
   subnet_id              = aws_default_subnet.default.id
   user_data_base64 = base64encode("${templatefile("${path.module}/scripts/install.sh", {
     N_KEYS  = var.n_keys
-    S3_URI = "s3://${aws_s3_bucket.benchmarks_bucket.id}/rkv/reports/"
+    S3_URI = "s3://${aws_s3_bucket.benchmarks_bucket.id}/${var.remote_report_dir}/"
     DAT_DIR = var.data_dir
     DISK_SIZE = var.additional_volume_size
+    IMAGE_TAG = var.image_tag
   })}")
   tags = {
     Name = "benchmark_rkv"
@@ -24,4 +25,3 @@ resource "aws_instance" "benchmark_instance" {
 
   iam_instance_profile = aws_iam_instance_profile.benchmark_instance.id
 }
-

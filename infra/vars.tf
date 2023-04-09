@@ -37,5 +37,5 @@ variable "remote_report_dir" {
 }
 
 variable "image_tag" {
-  default = "0.0.2"
+  default = "latest"
 }

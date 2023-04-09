@@ -33,7 +33,7 @@ variable "data_dir" {
 }
 
 variable "remote_report_dir" {
-  default = "projects/rkv/reports"
+  default = "projects/rkv/reports/${var.image_tag}/}"
 }
 
 variable "image_tag" {

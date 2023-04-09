@@ -40,7 +40,7 @@ run_benchmarks() {
         -e N_KEYS=$N_KEYS \
         -e S3_URI=$S3_URI \
         -e DAT_DIR=$DAT_DIR \
-        ltbringer/benchmark-rkv:latest
+        ltbringer/benchmark-rkv:${IMAGE_TAG}
 }
 
 main () {

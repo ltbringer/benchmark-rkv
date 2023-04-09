@@ -25,7 +25,7 @@ variable "availability_zone" {
 }
 
 variable "n_keys" {
-  default = 1000000
+  default = 10000000
 }
 
 variable "data_dir" {
